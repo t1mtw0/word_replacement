@@ -1,18 +1,13 @@
-// use std::env;
 use std::fs::File;
 use std::io::prelude::*;
 use clap::App;
 
-struct Args {
-    filename: String,
-    replacing_word: String,
-    replacement_word: String,
-}
+mod args;
 
 fn main() -> std::io::Result<()> {
     // Get command line arguments using clap
     let matches = App::new("word_replacement")
-        .version("1.0")
+        .version("1.1")
         .author("Timothy Tso <trhksrc@protonmail.ch>")
         .arg("-f, --filename=[FILE] 'Sets the text file'")
         .arg("-w, --words...=[replacing_word][replacement_word] 'Sets the two words to be used to process the text'")
@@ -23,14 +18,14 @@ fn main() -> std::io::Result<()> {
     let mut words: Vec<_> = matches.values_of("words").unwrap().collect();
 
     // Instantiate the args struct containing the three arguments
-    let args = Args {
+    let args_list = args::Args {
         filename: filename,
         replacing_word: words.remove(0).to_string(),
         replacement_word: words.remove(0).to_string(),
     };
 
     // Read text file
-    let mut txt_file = File::open(args.filename)?;
+    let mut txt_file = File::open(args_list.filename)?;
     let mut txt = String::new();
     txt_file.read_to_string(&mut txt)?;
 
@@ -41,8 +36,8 @@ fn main() -> std::io::Result<()> {
     let mut proc_txt_list = Vec::new();
 
     for word in &txt_list {
-        if word == &args.replacing_word {
-            proc_txt_list.push(args.replacement_word.to_owned());
+        if word == &args_list.replacing_word {
+            proc_txt_list.push(args_list.replacement_word.to_owned());
         } else {
             proc_txt_list.push(word.to_string());
         }
