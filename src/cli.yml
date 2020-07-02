@@ -1,0 +1,17 @@
+name: Word Replacement
+version: "1.0"
+author: Timothy Tso <trhksrc@protonmail.ch>
+args:
+  - filename:
+    short: f
+    long: filename
+    takes_value: true
+    required: true
+    help: The file containing the text to be processed
+  - words:
+    short: w
+    long: words
+    takes_value: true
+    required: true
+    multiple: true
+    number_of_values: 2
