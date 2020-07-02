@@ -7,7 +7,7 @@ mod args;
 fn main() -> std::io::Result<()> {
     // Get command line arguments using clap
     let matches = App::new("word_replacement")
-        .version("1.1")
+        .version("1.2")
         .author("Timothy Tso <trhksrc@protonmail.ch>")
         .arg("-f, --filename=[FILE] 'Sets the text file'")
         .arg("-w, --words...=[replacing_word][replacement_word] 'Sets the two words to be used to process the text'")
@@ -50,7 +50,12 @@ fn main() -> std::io::Result<()> {
         proc_txt.push_str(word);
         proc_txt.push_str(" ");
     }
-    println!("{}", &proc_txt);
+
+    // println!("{}", &proc_txt);
+
+    // Write the processed contents into a new text file
+    let mut replaced_file = File::create("replaced.txt")?;
+    replaced_file.write_all(proc_txt.as_bytes())?;
 
     Ok(())
 }
