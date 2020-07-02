@@ -47,4 +47,4 @@ OPTIONS:
 
 ## License
 
-This project is licensed under the [MIT License]()
+This project is licensed under the [MIT License](https://github.com/thksrc/word_replacement/blob/master/LICENSE)
