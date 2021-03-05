@@ -1,12 +1,8 @@
 # Word Replacement
 
-A simple CLI for replacing all occurences of a word with a different word
-
-This project uses string manipulation in rust to do a simple word replacement in a text file, creating a new one with the processed text.
+A simple CLI for replacing all occurences of a word with a different word, using rust.
 
 ## Example
-
-The following is a an example of how the projects works, using a simple text file.
 
 ```
 cd word_example
@@ -21,12 +17,6 @@ Inside the `word_example` directory, there should be a file called `replaced.txt
 `this quick brown fox jumps over this lazy dog`
 
 ## Usage
-
-Clone the repository.
-
-`git clone https://github.com/thksrc/word_replacement`
-
-Then, use cargo to run the program.
 
 `word_replacement [OPTIONS]`
 
@@ -44,7 +34,3 @@ OPTIONS:
     -f, --filename <FILE>                              Sets the text file
     -w, --words <replacing_word> <replacement_word>    Sets the two words to be used to process the text
 ```
-
-## License
-
-This project is licensed under the [MIT License](https://github.com/thksrc/word_replacement/blob/master/LICENSE)
